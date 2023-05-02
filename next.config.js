@@ -1,6 +1,8 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')
 const withTM = require('next-transpile-modules')
+const dotenvExpand = require('dotenv-expand')
 
+dotenvExpand.expand({ parsed: { ...process.env } })
 /**
  * @type {import('next').NextConfig}
  */
@@ -8,9 +10,14 @@ const config = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's3-alpha-sig.figma.com'
+      }
+    ],
     formats: ['image/avif', 'image/webp']
-  },
-  experimental: {}
+  }
 }
 
 module.exports = (_phase, { defaultConfig: _ }) => {
