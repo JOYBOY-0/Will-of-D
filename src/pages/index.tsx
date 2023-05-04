@@ -1,13 +1,15 @@
 import { Meta } from '~/components/common/meta'
-import { Welcome } from '~/components/common/welcome'
 import { PageLayout } from '~/components/layout/page'
 
 const HomePage = () => {
   return (
     <PageLayout>
-      <Meta />
+      <Meta
+      title='Will of D.'
+      description='A One Piece scrollytelling - fan site.'
+       />
 
-      <Welcome />
+      
     </PageLayout>
   )
 }

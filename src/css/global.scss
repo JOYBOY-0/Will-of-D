@@ -21,7 +21,7 @@ html {
 
   // tweak if site is light mode.
   color-scheme: dark;
-  background-color: black;
+  background-color: theme('colors.dark-void');
 }
 
 body {

@@ -11,10 +11,6 @@ const config = {
   swcMinify: true,
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 's3-alpha-sig.figma.com'
-      }
     ],
     formats: ['image/avif', 'image/webp']
   }
