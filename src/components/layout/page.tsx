@@ -1,4 +1,4 @@
-import { RealViewportProvider } from "next-real-viewport"
+import { RealViewportProvider } from 'next-real-viewport'
 
 type Props = {
   children?: React.ReactNode
