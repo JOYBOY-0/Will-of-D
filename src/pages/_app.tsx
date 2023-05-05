@@ -1,6 +1,10 @@
 import '~/css/global.scss'
 
 import localFont from '@next/font/local'
+/* MISC */
+import Lenis from '@studio-freight/lenis'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import type { NextComponentType, NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -15,8 +19,6 @@ import {
   isProd
 } from '~/lib/constants'
 import { GAScripts, useAppGA } from '~/lib/ga'
-
-/* MISC */
 
 // TODO delete this basement log if not a basement project.
 if (isProd && isClient) {
@@ -76,6 +78,34 @@ const App = ({ Component, pageProps, ...rest }: AppProps) => {
   const getLayout: GetLayoutFn =
     (Component as any).getLayout ||
     (({ Component, pageProps }) => <Component {...pageProps} />)
+
+  // init lenis scroll
+  const scrollRef = React.useRef<Lenis>()
+  React.useEffect(() => {
+    scrollRef.current = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false
+    })
+
+    scrollRef.current.on('scroll', ScrollTrigger.update)
+
+    const updateFunc: gsap.TickerCallback = (time) => {
+      scrollRef.current?.raf(time * 1000)
+    }
+
+    gsap.ticker.add(updateFunc, false, true)
+
+    return () => {
+      gsap.ticker.remove(updateFunc)
+      scrollRef.current?.destroy()
+    }
+  }, [])
 
   return (
     <>
