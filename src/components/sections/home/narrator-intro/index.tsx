@@ -33,7 +33,7 @@ export const NarratorIntro = () => {
                 start: 93,
                 end: 100,
                 to: {
-                  scale: 16,
+                  scale: 5,
                   yPercent: -100
                 }
               }
