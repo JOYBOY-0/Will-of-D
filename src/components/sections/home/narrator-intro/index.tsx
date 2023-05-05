@@ -1,63 +1,96 @@
-import * as Scrollytelling from '@bsmnt/scrollytelling'
+import * as St from '@bsmnt/scrollytelling'
 import React from 'react'
 import SplitType from 'split-type'
 
 import { useIsomorphicLayoutEffect } from '~/hooks/use-isomorphic-layout-effect'
 
-export const NarratorIntro = () => {
-  // const narratorText = useMemo(() => SplitType.create('#narrator-text'), [])
+import s from './styles.module.css'
 
+export const NarratorIntro = () => {
+  // we split the text into chars and words to animate them
   useIsomorphicLayoutEffect(() => {
     SplitType.create('#narrator-text')
   }, [])
 
   return (
-    <Scrollytelling.Root
-      debug
-      start="top top+=25%"
-      end="bottom bottom"
-      scrub={1.5}
-    >
-      <Scrollytelling.Pin childHeight={0} pinSpacerHeight={'300vh'}>
-        <div className="h-full-vh w-full-vw grid place-content-center">
-          <Scrollytelling.Animation
+    <St.Root>
+      <St.Pin top={0} childHeight={0} pinSpacerHeight={'700vh'}>
+        <div className="h-full-vh w-full-vw flex items-center justify-center relative">
+          <St.Animation
+            tween={{
+              start: 93,
+              end: 100,
+              to: {
+                scale: 6,
+                yPercent: -100
+              }
+            }}
+          >
+            <svg
+              className="w-[85vw] absolute"
+              viewBox="0 0 1247 634"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1246.13 0C1243.85 140.098 1198.49 269.324 1122.8 373.965C1009.15 531.307 827.571 633.109 623.067 633.109C418.564 633.109 236.983 531.307 123.339 373.965C47.6459 269.324 2.28534 140.098 0 0C4.29367 109.904 72.6462 209.42 181.858 282.413C294.601 357.829 450.628 404.575 623.067 404.575C795.507 404.575 951.533 357.829 1064.35 282.413C1173.56 209.42 1241.84 109.904 1246.13 0Z"
+                fill="white"
+              />
+              <St.Animation
+                tween={{
+                  start: 83,
+                  end: 90,
+                  from: {
+                    scaleX: 1.01,
+                    scaleY: 2
+                    //   ease: 'power3.in'
+                  }
+                }}
+              >
+                <path
+                  d="M181.858 282.413C72.6462 209.42 4.29367 109.904 0 0H1246.13C1241.84 109.904 1173.56 209.42 1064.35 282.413C951.533 357.829 795.507 404.575 623.067 404.575C450.628 404.575 294.601 357.829 181.858 282.413Z"
+                  fill="#131211"
+                />
+              </St.Animation>
+            </svg>
+          </St.Animation>
+          <St.Animation
             tween={[
               {
                 target: '.word',
                 start: 0,
-                end: 45,
+                end: 30,
                 from: {
                   opacity: 0,
                   stagger: {
-                    each: 2
+                    each: 1.5
                   }
                 }
               },
               {
                 target: '.word',
-                start: 80,
-                end: 100,
+                start: 55,
+                end: 60,
                 to: {
                   autoAlpha: 0,
-                  filter: 'blur(25px)',
-                  yPercent: -100,
+                  filter: 'blur(28px)',
+                  yPercent: -120,
+                  scale: 1.3,
+                  color: 'red',
                   stagger: {
-                    each: 1.2
+                    each: 0.75
                   }
                 }
               }
             ]}
           />
-          <p
-            id="narrator-text"
-            className="text-white font-glare max-w-[85vw] text-[3.5vw]"
-          >
+          <p id="narrator-text" className={s.narratorText}>
             The man who had acquired everything in this world, the Pirate King,
             Gol <span className="text-red-will">D.</span> Roger. The final words
             that were said at his execution sent people to the seas.
           </p>
         </div>
-      </Scrollytelling.Pin>
-    </Scrollytelling.Root>
+      </St.Pin>
+    </St.Root>
   )
 }

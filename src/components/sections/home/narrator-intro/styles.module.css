@@ -1,0 +1,6 @@
+.narratorText{
+    font-size: clamp(1.35rem, 3.5vw, 3.5vw);
+    line-height: 115%;
+    z-index: 10;
+    @apply text-white font-glare max-w-[92vw] md:max-w-[85vw];
+}
