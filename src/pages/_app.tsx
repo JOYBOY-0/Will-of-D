@@ -1,6 +1,6 @@
 import '~/css/global.scss'
 
-import { Inter } from '@next/font/google'
+import localFont from '@next/font/local'
 import type { NextComponentType, NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -26,8 +26,44 @@ if (isProd && isClient) {
 
 /* CUSTOM APP */
 
-const inter = Inter({
-  subsets: ['latin']
+const FragmentText = localFont({
+  src: [
+    {
+      path: '../fonts/PPFragment-TextRegular.woff2',
+      weight: '400'
+    }
+  ],
+  display: 'swap'
+})
+
+const FragmentGlare = localFont({
+  src: [
+    {
+      path: '../fonts/PPFragment-GlareRegular.woff2',
+      weight: '400'
+    }
+  ],
+  display: 'swap'
+})
+
+const FragmentSerif = localFont({
+  src: [
+    {
+      path: '../fonts/PPFragment-SerifLight.woff2',
+      weight: '300'
+    }
+  ],
+  display: 'swap'
+})
+
+const FragmentSans = localFont({
+  src: [
+    {
+      path: '../fonts/PPFragment-SansRegular.woff2',
+      weight: '400'
+    }
+  ],
+  display: 'swap'
 })
 
 const App = ({ Component, pageProps, ...rest }: AppProps) => {
@@ -50,7 +86,10 @@ const App = ({ Component, pageProps, ...rest }: AppProps) => {
           dangerouslySetInnerHTML={{
             __html: `
         :root {
-          --font-body: ${inter.style.fontFamily}, var(--font-system), sans-serif;
+          --font-sans: ${FragmentSans.style.fontFamily}, var(--font-system), sans-serif;
+          --font-serif: ${FragmentSerif.style.fontFamily}, var(--font-system), serif;
+          --font-glare: ${FragmentGlare.style.fontFamily}, var(--font-system), serif;
+          --font-text: ${FragmentText.style.fontFamily}, var(--font-system), serif;
         }
         `
           }}

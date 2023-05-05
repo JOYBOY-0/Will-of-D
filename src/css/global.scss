@@ -25,8 +25,8 @@ html {
 }
 
 body {
-  background-color: black;
-  font-family: var(--font-body);
+  background-color: theme('colors.dark-void');
+  font-family: var(--font-sans);
   transition: opacity #{$duration / 3 + 's'} ease-in;
 }
 
