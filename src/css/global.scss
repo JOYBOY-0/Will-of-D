@@ -8,6 +8,8 @@
   --font-system: -apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen,
     ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
   --inspect-color: #f00;
+  --color-red-will: #FB073B;
+  --color-dark-void: #131211;
 }
 
 html {
@@ -28,6 +30,7 @@ body {
   background-color: theme('colors.dark-void');
   font-family: var(--font-sans);
   transition: opacity #{$duration / 3 + 's'} ease-in;
+  overflow-x: hidden;
 }
 
 body.inspect * {
@@ -49,3 +52,6 @@ html.fonts-loaded body {
   opacity: 1 !important;
 }
 // end warning
+.char {
+  font-kerning: none;
+}
