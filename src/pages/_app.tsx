@@ -45,7 +45,7 @@ const FragmentGlare = localFont({
       weight: '400'
     },
     {
-      path: '../fonts/PPFragment-GlareExtrabold.woff2',
+      path: '../fonts/PPFragment-GlareExtraBold.woff2',
       weight: '800'
     }
   ],
