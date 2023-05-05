@@ -15,20 +15,34 @@ export const NarratorIntro = () => {
   return (
     <St.Root>
       <St.Pin top={0} childHeight={0} pinSpacerHeight={'700vh'}>
-        <div className="h-full-vh w-full-vw flex items-center justify-center relative">
+        <div
+          className="h-full-vh w-full-vw flex items-center justify-center 
+        overflow-x-hidden relative bg-dark-void"
+        >
           <St.Animation
-            tween={{
-              start: 93,
-              end: 100,
-              to: {
-                scale: 6,
-                yPercent: -100
+            tween={[
+              {
+                start: 0,
+                end: 92,
+                from: {
+                  opacity: 0,
+                  ease: 'none'
+                }
+              },
+              {
+                start: 93,
+                end: 100,
+                to: {
+                  scale: 16,
+                  yPercent: -100
+                }
               }
-            }}
+            ]}
           >
             <svg
               className="w-[85vw] absolute"
               viewBox="0 0 1247 634"
+              origin={'bottom'}
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -37,18 +51,19 @@ export const NarratorIntro = () => {
                 fill="white"
               />
               <St.Animation
-                tween={{
-                  start: 83,
-                  end: 90,
-                  from: {
-                    scaleX: 1.01,
-                    scaleY: 2
-                    //   ease: 'power3.in'
+                tween={[
+                  {
+                    start: 83,
+                    end: 90,
+                    from: {
+                      scaleX: 1.01,
+                      scaleY: 2
+                    }
                   }
-                }}
+                ]}
               >
                 <path
-                  d="M181.858 282.413C72.6462 209.42 4.29367 109.904 0 0H1246.13C1241.84 109.904 1173.56 209.42 1064.35 282.413C951.533 357.829 795.507 404.575 623.067 404.575C450.628 404.575 294.601 357.829 181.858 282.413Z"
+                  d="M182.489 283.661C72.9389 210.443 4.37437 110.618 0.0673828 0.372559H1250.07C1245.76 110.618 1177.27 210.443 1067.71 283.661C954.552 359.312 798.042 406.202 625.067 406.202C452.093 406.202 295.583 359.312 182.489 283.661Z"
                   fill="#131211"
                 />
               </St.Animation>

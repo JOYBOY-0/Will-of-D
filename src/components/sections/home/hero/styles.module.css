@@ -1,0 +1,5 @@
+.heroTitle{
+    font-size: clamp(1px, 20vw, 30vh);
+    line-height: 90%;
+    @apply flex flex-col items-center;
+}
